@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .blue {
+            width: 0px;
+            height: 5px;
+            background-color: rgb(92, 100, 254);
+        }
+        .lyrics {
+            width: 250px;
+            height: 150px;
+            overflow-y: scroll;
+            background-color: rgb(192, 224n, 255);
+        }
+    </style>
+    <div class = "blue"></div>
+    <div class="lyrics">
+        <p>
+            Yeah Oh
+            L-O-V-E is 쉿!
+            기지개를 쭉 꽉 묶던 머린
+            바람 저 멀리 따라 흩날리게
+            창 너머로 밀려든 모든 것이 Feeling good
+            아마 괜찮은 하루가 될 듯해
+            (Here we go, here we go)
+            두 발을 맞추던
+            어제의 넌 Bye 던져버려 다
+            (던져버려 다)
+            멋대로 머릴 헝클여 흐트러져도 좋아
+            느껴봐 Goodbye
+            L-O-V-E is 쉿!
+            오늘 내 # Mood Feel So Perfect
+            높게 불러 이 노래
+            나를 더 춤추게 해
+            넘치게 행복해 이 순간이
+            눈빛 몸짓 하나마다
+            스텝 시작해 봐
+            Shut up L-U-V
+            난 더 Little bit
+            신나 이 순간
+            L-O-V-E is 쉿!
+            I'm feeling good as hell 짜릿하지
+            너 없이도 지금 난 Shine
+            맘에 들어 다
+            L-O-V-E is 쉿!
+        </p>
+    </div>
+    <script>
+        let bar = document.querySelector('.blue');
+        let lyric = document.querySelector('.lyrics');
+
+        lyric.addEventListener("scroll", function(){
+            let scrollTop = lyric.scrollTop;
+            let scrollHeight = lyric.scrollHeight - lyric.clientHeight;
+            let per = scrollTop / scrollHeight;
+            bar.style.width = `${per * 250}px`;
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 추천기 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>로또 번호 추첨기 1</h1>
+    <script> 
+       var lotto = [];  /* 변수 담을 수 있는 Array */
+       while (lotto.length < 6){  /* 배열 안의 값이 6개가 될 때까지 계속 반복 */
+        var num = parseInt(Math.random() * 45 + 1);  /* 1~45까지 임의의 숫자 뽑고 정수형 변환 */
+        if(lotto.indexOf(num) == -1) {  /* 배열 안에 값이 있는지 검사 */
+            lotto.push(num);
+
+        }
+       }
+       lotto.sort((a,b) => a-b);  /* 로또 번호 오름차순 정렬 */
+       document.write("<div class='ball ball1'>" + lotto[0] + "</div>");
+       document.write("<div class='ball ball2'>" + lotto[1] + "</div>");
+       document.write("<div class='ball ball3'>" + lotto[2] + "</div>");
+       document.write("<div class='ball ball4'>" + lotto[3] + "</div>");
+       document.write("<div class='ball ball5'>" + lotto[4] + "</div>");
+       document.write("<div class='ball ball6'>" + lotto[5] + "</div>");
+
+    </script>
+    
+</body>
+</html>

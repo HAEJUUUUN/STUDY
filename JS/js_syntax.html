@@ -1,0 +1,142 @@
+// 자바 스크립트 기초 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let favoriteArtist = 'Yuri';
+        console.log(favoriteArtist);
+
+        let add = 1+2;
+        console.log(add);
+
+        const c = 2022;
+        const d = ' 올해는 호랑이의 해';
+        console.log(c+d);
+
+        let num1 = 10;
+        let num2 = 3;
+
+        num1 += num2;  // num1 = num1 + num2
+        console.log(num1);
+
+        let num3 = 1;
+        num3 ++;
+        ++ num3;
+        console.log(num3);
+
+        // 크고 작음 연산자를 사용 하자
+        const a =10;
+        const b= 15;
+        const cc =15;
+
+        console.log(a < b);  // true
+        console.log(b >= cc);  // true
+
+        // 두 값이 일치하는 것을 확인해보자
+        const dd = 1;
+        const e = '1';
+        const equals = d === e;  // '==='는 숫자형과 문자형을 비교할 경우 자료형까지 비교
+        console.log(equals);
+        
+        // OR 연산자
+        let orOperator = true || false;  // true
+        console.log(orOperator);
+        orOperator = false || false;  // false
+        console.log(orOperator);
+
+        // 조건문
+
+        // if문
+        const aa =0;
+        if(aa + 1 === 2){
+            console.log('aa + 1은 2입니다.');
+        }
+
+        // 반복문
+
+        // while문
+        let i = 1;
+        while(i <= 10){
+            console.log(i);
+            i++;
+        }
+
+        // for문
+        for(let j=1; j<=10; j++){
+            console.log(j);
+        }
+
+        // 함수
+        const aaa = 1;
+        const bb = 2;
+
+        const sum = aaa+bb;
+        console.log(sum);
+
+        function add(num1, num2){
+            return num1 + num2;
+            console.log("실행되지 않습니다.");
+        }
+
+        // Hello, name(자신의 이름)!
+        function hello(name){
+            console.log('Hello, '+ name + ' !');  // `Hello, ${name}`와 같음
+        }
+        hello('AOI');
+
+        // 점수를 성적등급으로 변환하기
+        function getGrade(score){
+            if(score === 100){
+                return 'A';
+            } else if(score >= 90){
+                return 'B';
+            } else if(score >= 80){
+                return 'C';
+            } else if(score >= 70){
+                return 'D';
+            } else{
+                return 'F';
+        }
+    }
+
+    const grade = getGrade(95);
+    console.log(grade);
+
+    // 객체 실습
+    const sample = {
+        'key with space' : true
+    };
+
+    const likelion = {
+        name : '멋쟁이 사자처럼',
+        age : 10
+    };
+
+    console.log(likelion.name);
+    console.log(likelion.age);
+
+    const numArray = [1,2,3,4,5];
+
+    const object = [
+        { name : '멋쟁이'},
+        { name : '사자처럼'}
+    ];
+    console.log(object[0]);
+
+    // 배열에 새 항목을 추가하기
+    object.push(
+        {name : '자바스크립트'}
+    );
+    console.log(object);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
