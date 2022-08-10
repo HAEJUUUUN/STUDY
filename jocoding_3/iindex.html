@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <h1 style="text-align: center; color: #FA8F0C; margin:25px; font-weight: bold" >오늘의 서울 날씨</h1>
+    <img src="weather.svg" alt="날씨" width="250" height="250" style="margin-left: auto; margin-right: auto; display: block;"/>
+    <div style=" text-align: center;">
+    <input id="city" type="text" value="">
+    <button onclick="getWeather()" type="button" class="btn btn-warning">날씨 가져오기</button>
+    </div>
+    <p id="temperature" style=" text-align: center; margin:50px; font-size:25px; font-weight: bold; color:#038CFD;" ></p>
+    <script>
+        function getWeather() {
+            let city = document.getElementById("city").value;
+            /* 도시 날씨 받아오기 */
+            fetch('https://goweather.herokuapp.com/weather/' + city)
+            .then((response) => response.json())
+            .then((data) => {
+                document.getElementById("temperature").innerHTML = data['temperature'];
+            });
+            }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>
