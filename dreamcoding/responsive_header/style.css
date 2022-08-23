@@ -1,0 +1,98 @@
+/* 변수 할당해서 사용. 일일이 바꾸지 않아도 됨*/
+:root {
+    --text-color: #f0f4f5;
+    --background-color: #0E0641;
+    --accent-color: #F3E82C;
+}
+
+body {
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color);
+    padding: 8px 12px;
+}
+
+a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.navBar_logo {
+    font-size: 24px;
+    color: var(--accent-color);
+}
+
+.navBar_menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.navBar_menu li{
+    padding: 8px 12px;
+}
+
+.navBar_menu li:hover {
+    background-color: #0583DC;
+    border-radius: 4px;
+}
+
+.navBar_icons {
+    display: flex;
+    color: var(--text-color);
+    list-style: none;
+    padding-left: 0;
+}
+
+
+.navBar_icons li{
+    padding: 4px 10px;
+}
+
+.navBar_toggle{
+    position: absolute;
+    right: 32px;font-size: 24px;
+    color: var(--accent-color);
+    display: none;
+}
+
+@media screen and (max-width: 768px){
+    .navBar{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+
+    .navBar_menu{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .navBar_menu li{
+        width: 100%;
+        text-align: center;
+    }
+
+    .navBar_icons{
+        justify-content: center;
+        width: 100%;
+        display: none;
+    }
+
+    .navBar_toggle{
+        display: block;
+    }
+
+    .navBar_menu.active,
+    .navBar_icons.active {
+        display: flex;
+    }
+}
