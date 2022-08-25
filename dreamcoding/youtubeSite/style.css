@@ -77,14 +77,16 @@ header .icons .fa-search {
     text-align: center;
     background-color: var(--black-color);
 }
+
 .player video {
     width: 100%;
     height: 100%;
+    /* 1000px 이상 너비가 되면 커지지 않음 */
     max-width: 1000px;
 }
 
 /* Video Information */
-body > .info {
+.info {
     padding: var(--padding);
 }
 
@@ -123,10 +125,12 @@ body > .info {
     transform: rotate(180deg);
 }
 
-.info .metadata .views{
+.info .views{
     font-size: var(--font-small);
     color: var(--grey-dark-color);
 }
+
+/* Action Buttons */
 
 .info .actions {
     display: flex;
@@ -156,7 +160,7 @@ body > .info {
     display: flex;
     justify-content: space-between;
     border-top: 1px solid var(--grey-light-color);
-    border-bottom: 1px solid var(--grey-dark-color);
+    border-bottom: 1px solid var(--grey-light-color);
 }
 
 .info .channel .metadata {
@@ -170,7 +174,7 @@ body > .info {
     border-radius: 50%;
 }
 
-.info.channel .metadata .info {
+.info .channel .metadata .info {
     display: flex;
     flex-direction: column;
 }
@@ -181,6 +185,7 @@ body > .info {
 
 .info .channel .metadata .info .subscribers {
     font-size: var(--font-small);
+    color: var(--grey-dark-color);
 }
 
 .info .channel .subscribe {
@@ -217,6 +222,8 @@ body > .info {
 
 .UpNext .item .info {
     flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
 }
 
 .UpNext .item .moreBtn {
@@ -224,9 +231,8 @@ body > .info {
     flex: 1 1 5%;
 }
 
-.UpNext .item .info {
-    display: flex;
-    flex-direction: column;
+.UpNext .item .info .title {
+    font-size: var(--font-small);
 }
 
 .UpNext .item .info .name,
