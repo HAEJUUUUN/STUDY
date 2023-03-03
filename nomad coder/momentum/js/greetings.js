@@ -1,4 +1,4 @@
-// = document.querySelector("#login-form"); querySelector는 모든 요소 검색이 가능하느라 id라는 것을 알 수 있는 #표시를 꼭 해야한다.
+// document.querySelector("#login-form"); querySelector는 모든 요소 검색이 가능하느라 id라는 것을 알 수 있는 #표시를 꼭 해야한다.
 // const loginForm = document.getElementById("login-form");  
 // const loginInput = loginForm.querySelector("input");
 // const loginButton = loginForm.querySelector("button");
