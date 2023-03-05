@@ -1,0 +1,55 @@
+<!-- 버튼을 몇 번 click 했는지 세는 프로그램 Reactjs로 작업 -->
+
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <!-- React import -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <!-- ReactDOM -> React element를 가져다 html로 바꾸는 역할을 한다 -->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>   
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        
+        // 위에서 React를 import했기 때문에 createElement function을 가진 React object에 접근가능
+        // h3 생성
+        /* const h3 = React.createElement(
+            "h3", 
+            // property 설정
+            {
+                id: "title",
+                onMouseEnter: () => console.log("mouse enter"),
+            }, 
+            "Hello, i'm a span"
+            ); */
+        // 위 주석 처리한 const h3 = React.createElement와 같은 내용 jsx로
+        const Title = (
+            <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+                Hello, i'm a title
+            </h3>
+        );
+
+        /* const btn = React.createElement(
+            "button", 
+            {
+                onClick: () => console.log("i'm clicked"),
+                style: {
+                    backgroundColor: "tomato",
+                },
+            }, 
+            "Click me"); */
+
+            // 위 주석 처리한 const btn = React.createElement와 같은 내용 jsx로
+            const Button = <button style={{
+                backgroundColor: "tomato",
+            }} onClick={() => console.log("i'm clicked")}>Click me</button>
+
+            
+        // render --> React element를 가지고 html로 만들어 배치. 사용자에게 보여준다는 의미
+        // btn을 root안에 render
+        const container = React.createElement("div", null, [Title, Button]);
+        ReactDOM.render(container, root);
+    </script>
+</html>

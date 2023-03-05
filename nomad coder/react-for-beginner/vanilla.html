@@ -1,0 +1,19 @@
+<!-- 버튼을 몇 번 click 했는지 세는 프로그램 바닐라js로 작업 -->
+
+<!DOCTYPE html>
+<html>
+    <body>
+        <span>Total clicks: 0</span>
+        <button id="btn">Click me</button>
+    </body>
+    <script>
+        let counter = 0;
+        const button = document.getElementById("btn");
+        const span = document.querySelector("span");
+        function handleClick() {
+            counter = counter + 1;
+            span.innerText = `Total clicks: ${counter}`;
+        }
+        button.addEventListener("click", handleClick);
+    </script>
+</html>
