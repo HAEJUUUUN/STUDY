@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <!-- React import -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <!-- ReactDOM -> React element를 가져다 html로 바꾸는 역할을 한다 -->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>   
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        // app시작시 counter는 0
+        let counter = 0;
+
+        function countUp() {
+            counter = counter + 1;
+            // countUp 함수 호출시 ReactDOM.render(<Container/>, root)를 리렌더링해서
+            // 1 증가된 counter 값이 화면에 보여지도록 해줌
+            render();
+        }
+
+        // render 함수는 Container 컴포넌트를 root에 담음
+        function render() {
+            ReactDOM.render(<App/>, root);
+        }
+
+        const App = () => ( 
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button onClick={countUp}>Click me</button>
+            </div>
+        );
+        render();
+    </script>
+</html>

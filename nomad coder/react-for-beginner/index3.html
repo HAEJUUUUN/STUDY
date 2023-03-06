@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <!-- React import -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <!-- ReactDOM -> React element를 가져다 html로 바꾸는 역할을 한다 -->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>   
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+
+        function App() {
+            // React.useState()는 react기능을 쓸 수있게 해주는 하나의 도구
+            // counter는 현재의 값 state 
+            // setCounter는 이벤트 발생시 변화를 주는 부분. 이후 counter로 다시 저장됨.
+            const [counter, setCounter] = React.useState(0); // useState(0) --> counter = 0 초기설정
+            const onClick = () => {
+                setCounter(counter + 1);
+            }
+            return ( 
+                <div>
+                    <h3>Total clicks: {counter}</h3>
+                    <button onClick={onClick}>Click me</button>
+                </div>
+            );
+        }
+        ReactDOM.render(<App/>, root);
+    </script>
+</html>
