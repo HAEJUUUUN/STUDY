@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <!-- React import -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <!-- ReactDOM -> React element를 가져다 html로 바꾸는 역할을 한다 -->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>   
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // props는 Btn이 전달받는 첫번째이자 유일한 인자. 
+        function Btn({text, onClick}) {
+            return (
+                <button 
+                    // button은 changeValue라는 onClick 리스너를 가지게 되는것.
+                    onClick={onClick}
+                    style={{
+                        backgroundColor: "yellow",
+                        color: "blue",
+                        padding: "10px, 20px",
+                        border: 0,
+                        borderRadius: 10,
+                    }}
+                    >{text}
+                </button>
+            );
+        }
+        // React.memo는 고차 컴포넌트(Higher Order Component)
+        // 컴포넌트가 동일한 props로 동일한 결과를 렌더링해낸다면,
+        // React.memo를 호출하고 결과를 메모이징(Memoizing)하도록 래핑하여 경우에 따라 성능 향상을 누릴 수 있다. 
+        // 즉, React는 컴포넌트를 렌더링하지 않고 마지막으로 렌더링된 결과를 재사용.
+        const MemorizedBtn = React.memo(Btn);
+        function App() {
+            const [value, setValue] = React.useState("Save Changes!");
+            const changeValue = () => setValue("Revert Changes!");
+            return (
+                <div>
+                    {/* 함수 부르는 방식
+                        함수형 컴포넌트 */}
+                        {/* 안에 정해주는 속성들 -> 전부 props 
+                           {changeValue} 이건 App()에서 정의한 함수이름*/}
+                    <MemorizedBtn text={value} onClick={changeValue}/> 
+                    {/* 어떤 prop이든 Btn 컴포넌트에 보내면 그것들은 Btn 함수의 첫번째 인자로 들어감 */}
+                    <MemorizedBtn text="Confirm!" />
+                </div>
+            );
+        }
+        const root = document.getElementById("root");
+        ReactDOM.render(<App/>, root);
+    </script>
+</html>

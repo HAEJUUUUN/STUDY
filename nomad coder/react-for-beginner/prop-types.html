@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <!-- React import -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <!-- ReactDOM -> React element를 가져다 html로 바꾸는 역할을 한다 -->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>   
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+    <script type="text/babel">
+        /* 만약 fontSize = 12이라고 기본값을 설정해준다면
+        적용되는 것은 fontSize의 prop 값을 설정해주지 않은 변수에만이다. */
+        function Btn({text, fontSize = 12}) {
+            return (
+                <button 
+                    style={{
+                        backgroundColor: "yellow",
+                        color: "blue",
+                        padding: "10px, 20px",
+                        border: 0,
+                        borderRadius: 10,
+                        fontSize: fontSize,
+                    }}
+                    >{text}
+                </button>
+            );
+        }
+        Btn.propTypes = {
+            // isRequired : props에 꼭 그 값 입력. 아니면 경고문
+            text: PropTypes.string.isRequired,
+            fontSize: PropTypes.number,
+        }
+        function App() {
+            return (
+                <div>
+                    <Btn text="Save Changes" fontSize={18}/>
+                    <Btn text="Continue"/>
+                </div>
+            );
+        }
+        const root = document.getElementById("root");
+        ReactDOM.render(<App/>, root);
+    </script>
+</html>
