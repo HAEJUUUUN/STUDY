@@ -13,7 +13,6 @@ console.log(Symbol('key') == Symbol('key'));  // false
 console.log('key' == 'key');  // true
 
 // object
-console.log("오브젝트");
 var obj = {
     name: '홍길동',
     age: 19,
