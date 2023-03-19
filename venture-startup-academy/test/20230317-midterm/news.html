@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .news {
+            background-image: url("/venture-startup-academy/test/20230317-midterm/img/city.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px;
+            padding: 30px;
+        }
+
+        #back {
+            width: 30px;
+            margin-top: -150px;
+        }
+
+        #title {
+            font-size: 40px;
+            padding-top: 100px;
+            color: white;
+            font-weight: bold;
+            padding-left: 40px;
+            padding-bottom: 20px;
+        }
+
+        #writer {
+            font-weight: bold;
+            color: white;
+            font-size: 20px;
+            padding-left: 40px;
+        }
+
+        #content {
+            font-size: 20px;
+            margin-top: 60px;
+            padding-left: 40px;
+        }
+
+        textarea {            
+            border-width: 3px;
+            border-color: #698AFF;
+            margin-left: 40px;
+            margin-top: 20px;
+        }
+
+        button {
+            width: 60px;
+            height: 30px;
+            border: none;
+            border-radius: 25px;
+            background-color: #698AFF;
+            color: white;
+            margin-top: 20px;
+            margin-left: 40px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            margin-left: 40px;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="news">
+            <!-- back 이미지 클릭시 main 페이지로 이동 -->
+            <a href="main.html"><img id="back" src="/venture-startup-academy/test/20230317-midterm/img/back.png" alt="뒤로가기"></a>
+            <!-- article 제목, 저자, 내용 -->
+            <p id="title">[2030 플라자] 내가 살 집은 어디인가</p>
+            <p id="writer">서솔 유튜브 ‘하말넘많 운영자’</p>
+            <p id="content">
+                “더 사실 건가요? 그만 사실 건가요?”<br>
+                내년 초 전세 계약 만료를 앞두고 집주인과 부동산의 전화가 빗발쳤다. 그들의 질문은 간단했다. 이사를 갈지 말지 빨리 결정하라는 것. 
+                졸지에 계약 만료가 여섯 달이나 남은 시점부터 골머리를 앓았다. 집주인은 재계약을 원한다면 전세금 5%를 올릴 것이라는 말까지 전했다. <br><br>
+                “며칠만 더 생각할 시간을 주세요.” 빨리 결정하라고 보채는 집주인을 뒤로한 채 2년마다 열어보는 부동산 앱을 다시 깔았다. 
+                그 안에 알고 싶지 않은 진실이 있었다. 내가 갈 만한 빌라의 시세는 2년 사이 몇 천만원부터 1억원 이상씩 올라 있었다. 
+                전국적으로 집값이 하락하고 세입자 우위의 시장이 되었다는 말은 허상인 듯했다. 서울 지도를 하릴없이 늘렸다 줄였다 하며 허탈함을 느꼈다.
+                ‘결혼하지 않은 1인 가구 여성’의 신분으로 30대에 접어든 뒤 마주한 부동산 시장은 생각보다 더 가혹했다.  <br><br>올해 들어 아파트 시세가 떨어졌다고 한들, 
+                이미 치솟아 있는 주택 가격에 ‘과연 내가 부동산 사다리를 부여잡을 수 있을까?’ 회의적인 생각이 가득 찼다. 아파트 시세를 확인하는 웹사이트에 들어가면 나는 들어갈 수 없을 것만 같은 그들만의 리그였다. 
+                신혼부부, 다자녀, 부양가족 가점. 나는 그 어떤 카테고리에도 들어가지 못하고 부유했다. 아파트는 여전히 먼 나라 이야기였다.
+                ‘청포자(청약 포기자의 준말)’라는 말이 실감 났다. 매달 10만원씩 납입하는 청약 통장은 그저 뜬구름 같았다. 삶의 방향을 운에 기대고 싶지 않다는 신념으로 로또 한번을 사본 적이 없는데, 
+                어림없는 청약 가점으로 ‘추첨제’에 운을 시험해야 한다는 사실이 싫었다. 설상가상, 청약에 당첨된다고 해도 높은 분양가와 대출 이자를 감당해 낼 자신이 없어 청약은 도전조차 해 보지 못했다. 지금껏 나도 ‘청포자’ 중 한 명이었다.
+            </p>
+            <!-- 댓글작성 textarea -->
+        <textarea name="comment" id="comment" cols="140" rows="3"></textarea><br>
+        <!-- 댓글 등록 버튼 -->
+        <button>등록</button>
+        <!-- 저작권 표시 footer -->
+        <footer>Copyrightⓒ2022.Boogle. All rights reserved.</footer>
+        </div>
+    </div>
+</body>
+</html>
