@@ -1,5 +1,6 @@
 // 01. object
 
+// 리터럴 객체 선언
 var student = {
     name: '유관순',
     age: 16,
@@ -8,7 +9,7 @@ var student = {
         this를 붙이지 않으면 특히 name이 student의 name key를 가리키지 않게됨 */
         return `${this.name}은(는) ${this.age}세 입니다.`;  
     },
-};
+};  // 리터럴 뒤에는 세미콜론을 붙인다.
 
 console.log(student);
 console.log(typeof student);
