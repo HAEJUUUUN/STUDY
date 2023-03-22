@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 예제1</title>
+    <style>
+        .prac-class {
+            color: blue;
+        }
+    </style> 
+</head>
+<body>
+    <h1 id="prac-id">getElementById() 예제</h1>
+    <p class="prac-class">getElementsByClassName() 예제 1</p>
+    <p class="prac-class">getElementsByClassName() 예제 2</p>
+    <div>
+        <p>getElementsByTagName() 예제 1</p>
+        <p>getElementsByTagName() 예제 2</p>
+    </div>
+    <script>
+
+        /* getElementById() 사용 */		
+		const $pracId = document.getElementById("prac-id");
+        $pracId.style.backgroundColor = 'yellow';
+
+        /* getElementsByClassName() 사용 */
+		const $pracClass = document.getElementsByClassName("prac-class");
+        for(let i = 0; i < $pracClass.length; i++){
+            $pracClass[i].style.fontWeight = "bold";
+        }
+
+        /* getElementsByTagName() 사용 */
+        const $pTag = document.getElementsByTagName("p");
+        for(let i = 0; i < $pTag.length; i++){
+            $pTag[i].style.fontSize = "10px";
+        }
+
+    </script>
+</body>
+</html>

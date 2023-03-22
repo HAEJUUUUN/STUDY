@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 예제2</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>지역</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>김철수</td>
+                <td>25</td>
+                <td>서울시</td>
+            </tr>
+            <tr>
+                <td>이영희</td>
+                <td>22</td>
+                <td>경남 창원시</td>
+            </tr>
+            <tr>
+                <td>박지수</td>
+                <td>27</td>
+                <td>강원도 강릉시</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+
+				/* querySelector사용 */
+                const $secondRow = document.querySelector('table tbody tr:nth-child(2)');
+
+				/* previousElementSibling 사용 */
+                const {previousElementSibling} = $secondRow;
+                previousElementSibling.style.backgroundColor = 'orange';
+
+				/* nextElementSibling사용 */
+                const {nextElementSibling} = $secondRow;
+                nextElementSibling.style.backgroundColor = 'skyblue';
+       
+    </script>
+</body>
+</html>
