@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01. inline style</h1>
+    <div style="color: white; border: 1px solid black;" class="a">AREA</div>
+    <script>
+        const $area = document.querySelector('div');
+
+        console.log($area.style);  // CSSStyleDeclaration 객체로 넘어옴
+
+        $area.style.width = '100px';
+        $area.style.height = '100px';
+
+        $area.style.backgroundColor = 'lightgray';  // 마침표 표기법 + 낙타 표기법
+        // $area.style.[background-color] = 'lightgray';  // 대괄호 표기법 (css와 같은 속성명) + 케밥 표기법
+    </script>
+</body>
+</html>

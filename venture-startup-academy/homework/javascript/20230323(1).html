@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 추가 예제</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;     /* 플렉스 컨테이너 내의 아이템을 배치할 때 사용할 주축 및 방향(정방향, 역방향)을 지정 */
+                                        /* 플렉스 요소는 수직 방향으로 위쪽에서 아래쪽으로 배치 */
+
+            align-items: center;        /* 플렉스 요소는 플렉스 컨테이너의 가운데에 배치 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>리스트 추가 실습</h1>
+        <input type="text" id="inputText" placeholder="추가할 내용 작성">
+        <button id="addBtn1" onclick="addByAttr()">어트리뷰트 방식 추가</button>
+        <ul id="list1"></ul>
+
+        <button id="addBtn2">프로퍼티 방식 추가</button>
+        <ul id="list2"></ul>
+    </div>
+    <script>
+
+        /* 요소 선택 */
+        const inputText = document.getElementById("inputText");
+        const addBtn1 = document.getElementById("addBtn1");
+        const addBtn2 = document.getElementById("addBtn2");
+        const list1 = document.getElementById("list1");
+        const list2 = document.getElementById("list2");
+        
+        function addByAttr() {
+            const inputTextValue = inputText.value;
+            list1.innerHTML += `<li>${inputTextValue}</li>`;
+            inputText.value = '';
+        }
+
+        function addByProp() {
+            const inputTextValue = inputText.value;
+            
+            // <li>태그 만들기
+            // <li> </li>
+            const listItem = document.createElement("li");
+            
+            /*
+                a (beforebegin)
+                <ul>
+                    b (afterbegin)
+
+                    c (beforeend)
+                </ul>
+                d (afterend)
+            */
+            // c자리에 넣어줌 (afterbegin 사용해도 됨)
+            listItem.insertAdjacentHTML("beforeend", inputTextValue);
+            // <li>inputTextValue</li>을 list2의 자손으로 넘겨줌
+            list2.appendChild(listItem);
+            // inputText 초기화
+            inputText.value = "";
+        }
+
+        /* 이벤트 핸들러 추가 (property 방식) */
+        /* 
+            let addBtn2 = {
+                onclick: function addByProp() {
+                    alert('add');
+                }
+            };
+        */
+        // 위와 같다고 생각하면 되기 때문에 addByProp()이 아닌 addByProp.
+        // 실제로 함수를 실행하는건 onclick이기 때문
+        addBtn2.onclick = addByProp;
+
+    </script>
+</body>
+</html>

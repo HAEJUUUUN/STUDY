@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    .custom-style {
+        color: #FF4500;
+        font-size: 2em;
+        text-decoration: underline;
+    }
+    </style>
+    <title>class 어트리뷰트를 활용한 css 예제</title>
+</head>
+<body>
+
+    <h1 id="title">빨간 글씨에 밑줄이 생기고파</h1>
+    <button id="styleButton">스타일 변경</button>
+    <script>
+        // id가 title인 h1 요소를 가져와 const 변수에 담기
+        const title = document.getElementById('title');
+
+        // id가 styleButton인 button 요소를 가져와 const 변수에 담기
+        const styleBtn = document.getElementById('styleButton');
+
+        styleBtn.addEventListener('click', function() {
+            title.classList.add('custom-style');
+        });
+
+    </script>
+</body>
+</html>

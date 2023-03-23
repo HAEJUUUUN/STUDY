@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01. attribute</h1>
+    <label for="username">유저명</label>
+    <input type="text" id="username" value="user01">
+
+    <script>
+        const $input = document.getElementById("username");
+        console.log($input.attributes[0]);
+
+        // 복잡하게 프로퍼티로 접근하지 않고 getAttribute로 어트리뷰트 값을 얻을 수 있다.
+        const inputValue = $input.getAttribute('value');
+        console.log(inputValue);
+
+        // setAttribute를 이용해 value attribute를 user02로 수정
+        $input.setAttribute('value', 'user02');
+    </script>
+
+    <label for="nuckname">닉네임</label>
+    <input type="text" id="nickname" value="JSMaster">
+    
+    <script>
+        const $nickname = document.getElementById('nickname');
+
+        // 해당 요소가 attribute를 가졌는지 확인
+        console.log($nickname.hasAttribute('name'));  // false
+        console.log($nickname.hasAttribute('value'));  // true
+
+        if($nickname.hasAttribute('value')) $nickname.removeAttribute('value');
+
+        // attribute는 수정되거나 삭제되어도 기존에 화면이 처음 렌더링 됐던(그려졌던)것에서 변화가 없다. (실시간 반영 X)
+        console.log($nickname.hasAttribute('value'));  // true (지워도 true)
+    </script>
+</body>
+</html>

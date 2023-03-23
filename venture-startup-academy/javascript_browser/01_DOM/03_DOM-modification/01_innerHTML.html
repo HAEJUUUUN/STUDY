@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01. innerHTML</h1>
+    <p>innerHTML은 요소 노드를 취득하거나 변경할 때 사용한다.</p>
+
+    <div id="area">태그 element값을 읽거나 변결할때
+        <span>innerHTML</span>속성을 사용한다.
+    </div>
+
+    <script>
+        const $area = document.getElementById('area');
+
+        // 읽어온 요소가 내부에 가지는 값(태그 포함)
+        console.log($area.innerHTML);  // area 요소 안의 text와 더불어 html태그 요소도 가져옴
+    
+        // 읽어온 요소가 내부에 가지는 값(태그 제외)
+        console.log($area.innerText);
+
+        // 기존 $area에 텍스트 노드 추가
+        $area.innerHTML += '값 추가'; 
+
+        // 노드 교체 (추가 노드에 html 태그가 있다면 innerHTML 꼭 사용. 없으면 innerText 사용도 가능)
+        $area.innerHTML = '<h1>innerHTML</h1>속성으로 값 변경';
+
+        // 노드 삭제 (빈 문자열로 교체 > 노드 지워지는 효과)
+        $area.innerHTML = '';
+    </script>
+</body>
+</html>
