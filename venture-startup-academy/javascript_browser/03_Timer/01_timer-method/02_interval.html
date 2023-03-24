@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>02. interval</h1>
+
+    <h3>setInterval</h3>
+    <h3>clearInterval</h3>
+    <p>
+        setInterval(func, time, args, ...)
+        
+        setInterval 함수는 두번째 인수로 전달받은 시간(ms)으로 반복동작하는 타이머를 생성한다. <br>
+        이후 타이머가 만료될 때마다 첫번째 인수로 전달받은 콜백함수가 반복호출된다. <br>
+        이는 타이머가 취소될 때까지 계속된다. <br>
+        콜백 함수에 전달해야하는 인수가 존재하는 경우 세번째 이후의 인수로 전달할 수 있다.
+    </p>
+
+
+    <script>
+        let count = 1;
+        const timerId = setInterval(() => {
+            console.log(count++);                                     
+            if(count == 6) {
+                console.log('interval timer 종료!');
+                clearInterval(timerId);  // timerId를 멈추고 싶으니까 clearInterval의 인자로 timerId를 넘겨준다.
+            }
+        }, 1000)
+    </script>
+</body>
+</html>
