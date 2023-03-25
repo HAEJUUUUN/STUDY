@@ -1,6 +1,9 @@
 import { useState } from "react";
 
 function App() {
+  const divStyle = {
+    margin: "10px"
+  }
   const btnStyle = {
     color: "white",
     margin: "5px",
@@ -29,7 +32,7 @@ function App() {
     setToDos(toDos.filter((item, todoIndex) => index !== todoIndex));
     };
   return (
-    <div>
+    <div style={divStyle}>
       <h1>My To Dos ({toDos.length})</h1>
       <form onSubmit={onSubmit}>
         <input onChange={onChange} value={toDo} type="text" placeholder="Write your to do..."/>
