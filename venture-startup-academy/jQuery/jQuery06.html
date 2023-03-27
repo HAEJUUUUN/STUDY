@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.6.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>필터링 메소드</h1>
+    <h3>filtering 메소드의 사용법</h3>
+    <p>필터 메소드를 사용해 문서 객체를 선택할 수 있음.</p>
+    <h4 class="test">test-1</h4>
+    <h4 class="test">test-2</h4>
+    <h4 class="test">test-3</h4>
+    <h4 class="test">test-4</h4>
+    <h4>test-5</h4>
+    <h4 class="test">test-6</h4>
+
+    <script>
+        $(function(){
+            console.log($("h4:even"));
+
+            /* 필터 선택자 */
+            $("h4:even").css("background", "black").css("color", "white");
+
+            /* 필터 메소드 */
+            $("h4").filter(":even").css({"background":"tomato", "color":"white"});
+
+            /* 함수를 매개변수로 하는 filter()메소드 사용 */
+            $("h4").filter(function(index){
+                return index % 2 == 1;
+            }).css({"background":"yellowgreen", "color":"white"});
+
+            /* 선택된 요소 중 제일 처음에 있는 요소 리턴 */
+            $("h4").first().css("font-size", "1.5em");
+
+            /* 선택된 요소 중 제일 마지막에 있는 요소 리턴 */
+            $("h4").last().text($("h4").last().text() + " : 마지막 요소");
+
+            /* 인덱스 번호와 일치하는 요소만 리턴 */
+            $("h4").eq(3).text($("h4").eq(3).text() + " : eq()메소드로 필터링 됨");
+
+            /* 인자값과 일치하지 않는 요소만 리턴 */
+            $("h4").not(".test").css({"background":"yellow", "color":"black"});
+        });
+    </script>
+</body>
+</html>

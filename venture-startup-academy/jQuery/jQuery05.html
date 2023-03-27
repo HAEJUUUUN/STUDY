@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.6.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h3>순서에 따른 필터 선택자</h3>
+    <p>:odd :even :first :last</p>
+    <table border="1" style="border-spacing: 0px;">
+        <tr>
+            <th>이름</th>
+            <th>혈액형</th>
+            <th>지역</th>
+        </tr>
+        <tr>
+            <td>김용승</td>
+            <td>B</td>
+            <td>서초구</td>
+        </tr>
+        <tr>
+            <td>유호준</td>
+            <td>O</td>
+            <td>광진구</td>
+        </tr>
+        <tr>
+            <td>김혜준</td>
+            <td>B</td>
+            <td>인천</td>
+        </tr>
+        <tr>
+            <td><a href="#">김유찬</a></td>
+            <td>O</td>
+            <td>동대문구</td>
+        </tr>
+        <tr>
+            <td>신재성</td>
+            <td>O</td>
+            <td>서초구</td>
+        </tr>
+        <tr>
+            <td>윤상현</td>
+            <td>AB</td>
+            <td>광명시</td>
+        </tr>
+        <tr>
+            <td>김효진</td>
+            <td>A</td>
+            <td>광진구</td>
+        </tr>
+        <tr>
+            <td>최예나</td>
+            <td>B</td>
+            <td>노원구</td>
+        </tr>
+    </table>
+
+    <script>
+        $(function(){
+            $("tr:odd").css("background", "red");        // 인덱스 체계인 것을 알 수 있다.(홀수)
+            $("tr:even").css("background", "lightgray"); // 인덱스 체계인 것을 알 수 있다.(짝수)
+            $("tr:first").css("background", "black").css("color", "white");
+            $("tr:last").css("background", "blue").css("color", "white");
+        });
+    </script>
+
+    <p>:nth-child() :nth-of-type() :eq() :gt() :lt() :contains() :has() :not()</p>
+    <script>
+        $(function(){
+
+            /* 수열번 째에 위치하는 태그 선택(인덱스 x, 서순 체계) */
+            $("tr:nth-child(2n)").css("background", "yellowgreen");
+
+            /* n번째 위치하는 태그 선택(인덱스 체계) */
+            $("tr:eq(2)").css({"background":"black", "color":"white"});
+            
+            /* n번째를 초과하는 태그 선택(인덱스 체계) */ 
+            $("tr:gt(6)").css("background", "yellow");
+
+            /* n번째 미만인 태그 선택(인덱스 체계) */ 
+            $("tr:lt(7)").css("color", "orangered");
+
+            /* 특정 태그를 가지고 있는 태그 선택 */ 
+            $("td:has(a)").css("font-size", "1.5em");
+            $("td:has(a[href])").css("font-size", "0.5em");  // a태그인데 href 속성이 있으면
+
+            $("td:not(:contains('김용승'))").css("color", "green");
+        });
+    </script>
+
+    <h3>pseudo 선택자 정리</h3>
+    <pre>
+        $(':input'), $(':button'), $(':image'), $(':checkbox'), $(':radio'), $(':text');                     // 모든 input, button, img, checkbox, radio, input(type="text") 선택<br>
+        $(':odd'), $(':even'), $(':gt(순서)'), $(':lt(순서)'), $(':last')                                     // 선택된 것들 중 홀수 번째, 짝수 번째, 주어진 순서보다 큰, 주어진 순서보다 작은, 마지막 태그를 선택<br>
+        $(':focus'), $(':parent'), $(':empty');, $(':disabled'), $(':enabled'), $(':visible'), $(':hidden'); // 현재 포커스 된, 자식이 하나라도 있는, 자식이 없는 태그, 비활성화 된 태그, 활성화된 태그, 투명이 아닌, 숨겨진 태그를 선택<br>
+        $(':visible'), $(':checked'), $(':selected'), $(':only-child');, $(':first-child'), $(':last-child') // 각각 체크된(체크박스), 선택된(select), 부모의 유일한 자식인 태그, 첫 번째 자식인 태그, 마지막 자식인 태그를 선택<br>
+        $(':nth-child(순서)'), $(':nth-of-type(순서)'), $(':eq(순서)');                                       // 순서 번째 자식 태그, 해당 타입 중 순서 번째 자식 태그, 순서 번째 태그를 찾습니다. eq는 0부터 시작하고, nth-child는 1부터 시작<br>
+        $(':has(선택자)'), $(':contains(텍스트)');                                                            // 각각 선택자를 자식으로 갖고 있는 태그나 해당 텍스트를 갖고 있는 태그를 선택합니다.<br>
+    </pre>
+
+</body>
+</html>

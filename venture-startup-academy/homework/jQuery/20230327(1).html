@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang='ko'>
+    <head>
+        <title>jQuery</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>text1</h1>
+        <h2>text2</h1>
+        <h1 id="text">text3</h1>
+        <h1 name="text">text4</h1>
+        <h1 class="text">text5</h1>
+        
+        <script>
+            $("h1").css('color', 'red');
+            $("#text").css('color', 'orange');
+            $("h1[name = text]").css('color', 'yellow');
+            $(".text").css('color', 'green');
+        </script>
+    </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.6.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>input 타입 필터 선택자</h1>
+    <p>input 태그의 type 속성에 따라 문서 객체 선택 가능</p>
+    <label>텍스트 상자: </label><input type="text"><br>
+    <label>패스워드: </label><input type="password"><br>
+    <label>체크박스 버튼: </label><input type="checkbox"><br>
+    <label>라디오 버튼: </label><input type="radio"><br>
+
+    <label>버튼: </label><input type="button" value="버튼"><br>
+    <label>리셋 버튼: </label><input type="reset" value="리셋"><br>
+    <label>submit 버튼: </label><input type="submit" value="제출"><br>
+
+    <label>파일: </label><input type="file"><br>
+    <label>이미지: </label><input type="image" src="../html5/sample/image/flower1.PNG"><br>
+
+    <script>
+        $(function(){
+            $("input:text").css("background", "red");
+            $("input:button").attr("value", "왕버튼").css({"width":"200px", "height":"100px"});
+            $("input:file").css("background", "yellowgreen");
+            $("input:image").mouseenter(function(){
+                // src 속성을 ../html5/sample/image/river1.PNG 로 바꾸기
+                $(this).attr("src", "../html5/sample/image/river1.PNG");
+            });
+            $("input:image").mouseout(function(){
+                $(this).attr("src", "../html5/sample/image/forest1.PNG");
+            });
+            $("input:radio").prop("checked", true);
+        });
+    </script>
+
+    <h3>checkbox의 상태에 대한 선택자</h3>
+    <p>.prop("checked"), :checked</p>
+    <label>취미: </label>
+    <input type="checkbox" name="hobby" id="game" value="game">
+    <label for="game">게임</label>
+    <input type="checkbox" name="hobby" id="movie" value="movie">
+    <label for="movie">영화</label>
+    <input type="checkbox" name="hobby" id="music" value="music">
+    <label for="music">음악</label>
+
+    <script>
+
+        /* change: 해당 요소에 변화가 일어나면 발생하는 이벤트 */ 
+        $("input:checkbox").change(checkedChange);
+
+        function checkedChange(){
+            console.log($(this).prop("checked")); 
+
+            var bool = $(this).prop("checked");
+            if(bool){
+                $(this).css({"width":"50px", "height":"50px"});
+            } else {
+                $(this).css({"width":"15px", "height":"15px"});
+            }
+        };
+    </script>
+
+    <button onclick="test1();">확인</button>
+    <script>
+        function test1(){
+            var checkeds = $("[name=hobby]:checked");
+            console.log(checkeds);
+
+            var str = "";
+            for(var i = 0; i < checkeds.length; i++){
+                str += i != 0 ? ', ' : '';
+                str += checkeds[i].value;
+            }
+            alert("체크 된 항목: " + str);
+        }
+    </script>
+
+    <hr>
+
+    <h3>input 상태에 대한 선택자</h3>
+    <p>:enabled :disabled</p>
+    <label>활성화 텍스트 상자: </label><input type="text" value="미리 내용 있음" readonly><br>
+    <label>비 활성화 텍스트 상자: </label><input type="text" id="dis" disabled><br>
+    <label>활성화 버튼: </label><input type="button" value="활성화"><br>
+    <label>비 활성화 버튼: </label><input type="button" value="비활성화" disabled><br>
+
+    <script>
+        $(function(){
+            $("input:enabled").css("background", "powderblue");
+            $("input:disabled").css("background", "yellow");
+
+            /* readonly를 지원하는 pseudo 선택자는 없음 */
+            // $("input:readonly").css("background", "pink");
+        });
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

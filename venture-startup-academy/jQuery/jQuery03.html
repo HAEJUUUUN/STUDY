@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .first{color: red;}
+        .second{color: pink;}
+        .third{color: orange;}
+    </style>
+    <script src="jquery-3.6.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>메소드</h1>    
+    <h3>css() 메소드</h3>
+    <p>문서 객체의 스타일을 검사하거나 변경할 때 사용한다.</p>
+    <h1 class="first">test-1</h1>
+    <h1 class="second">test-2</h1>
+    <h1 class="third">test-3</h1>
+    <h1 class="first">test-4</h1>
+    <script>
+        $(function(){
+
+            /* css 속성 변경 */
+            /* 1. 메소드 체이닝 방식 */
+            $(".first").css("color", "black");
+            $(".first").css("color", "blue").css("background", "green");
+
+            /* css 속성명에 해당하는 속성 값을 리턴 */
+            /* 선택자가 여러 요소를 리턴!하라고 하는 경우, 첫번째 요소의 값만 리턴함 */
+            console.log($(".first").css("color"));      // rgb값으로 나옴
+
+            /* 2. 객체 방식 */
+            $(".first").css({"font-size":"3em", "background":"tomato"});
+
+            var styleObj = {
+                "opacity": 0.5,
+                "text-shadow": "2px 2px 2px black"
+            }
+            $(".first").css(styleObj);
+        });
+    </script>
+    
+    <hr>
+
+    <h3>attr() 메소드</h3>
+    <p>
+        문서 객체의 특정 속성 값을 알아내거나 속성을 추가할 때 사용한다.<br>
+        속성 값이 세팅되어 있지 않으면, undefined를 리턴한다.
+    </p>
+    <img src="../html5/sample/image/flower1.PNG" width="400px" height="300px"><br>
+    <img src="../html5/sample/image/flower3.PNG" width="400px" height="300px"><br>
+    <button onclick="changeImgSrc();">사진 src 속성값 변경</button>
+    <script>
+        $(function(){
+
+            /* 속성명에 해당하는 속성 값을 리턴 */
+            /* 선택자가 여러 요소를 리턴!하라고 하는 경우, 첫번째 요소의 값만 리턴한다. */
+            var imgSrc = $('img').attr('src');
+            console.log("사진 경로: " + imgSrc);
+
+            /* 객체를 통해 여러 속성을 설정 */
+            $("img").attr({"width":"100px", "height":"50px"});
+
+            /* 객체의 속성을 제거 */
+            // $("img").removeAttr("width").removeAttr("height");   // 원본 크기로 나옴
+        });
+        function changeImgSrc(){
+            $("img").attr("src", "../html5/sample/image/flower4.PNG");
+            // $("img").prop("src", "sample/image/flower4.PNG");
+        }
+    </script>
+
+    <!-- 속성 값이 존재하는 속성에 대해 속성 값을 설정할 때는 attr과 다르지 않다. -->
+    <h3>prop() 메소드</h3>
+    <p>
+        속성 값의 여부를 true/false로 리턴함<br>
+        자바스크립트를 이용한 동적인 제어에 많이 사용함
+
+        ★attr과 prop의 차이점
+        속성에 속성값을 설정할 때에는 차이가 없으나
+        속성을 리턴할 때는 attr -> 속성값, prop -> boolean
+        (속성 값이 있는 속성은 attr! 속성 값이 없는 속성은 prop!으로 외우자!)
+    </p>
+    <form>
+        <input type="checkbox" id="checkAll" name="checkAll">
+        <label for="checkAll">전체 선택/해제</label>
+
+        <input type="checkbox" id="pizza" name="menu" class="common" checked>
+        <label for="pizza">피자 400원</label>
+
+        <input type="checkbox" id="chiken" name="menu" class="common">
+        <label for="chiken">치킨 500원</label>
+
+        <input type="checkbox" id="coke" name="menu" class="common">
+        <label for="coke">콜라 10원</label>
+    </form>
+    <script>
+        $(document).ready(function(){
+
+            /* 선택자가 여러 요소를 리턴!하라고 하는 경우, 첫번째 요소의 값만 리턴함 */
+            console.log($("input[type=checkbox]").prop('checked')); // true, false
+            // console.log($("input[type=checkbox]").attr('checked')); // checked, undefined
+
+            /* 각각의 버튼에 click 이벤트 추가, $(this)를 통해 이벤트가 발생한 객체에 접근이 가능하다 */
+            $("input[type=checkbox]").click(function(){
+                // console.log($("input[type=checkbox]").prop("checked"));  // 이렇게 하면 첫번째 요소만 해당됨
+                var bool = $(this).prop("checked");  // 선택자를 만족하며 이벤트를 발생시킨 요소 => this
+                if(bool == false){  // 버튼이 하나라도 해제되면 전체 선택 버튼도 해제되게 하는 조건문
+                    $("#checkAll").prop("checked", bool);
+                }
+                console.log($(this).prop("checked"));
+            });
+
+            $("#checkAll").click(function(){
+                // 여기서 this는 checkAll을 가리킴
+                var bool = $(this).prop("checked");     // 전체 선택 버튼의 체크상태 확인
+                $(".common").prop("checked", bool);     // 전체 선택 버튼의 체크상태와 같이 나머지 버튼도 체크 및 해제를 한다.
+            });
+        });
+
+    
+    </script>
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
