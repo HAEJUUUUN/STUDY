@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .wrap * {
+            border: 1px solid lightgray;
+            display: block;
+            padding: 5px;
+            margin: 15px;
+            color: gray;
+        }
+        .type {
+            width: 500px;
+        }
+    </style>
+    <script src="jquery-3.6.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>순회(탐색) 메소드</h1>
+    <h3>Descendants 메소드</h3>
+    <p>선택된 요소의 하위 요소들을 선택할 수 있는 메소드: children(), find()</p>
+    <div class="wrap">
+        <div class="type">div (great-grandparent)
+            <ul>ul (grandparent)
+                <li>li (direct parent)
+                    <span>span</span>
+                </li>
+            </ul>
+        </div>
+        <div class="type">div (grandparent)
+            <p>p (direct parent)
+                <span>span</span>
+            </p>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            var style = {"color":"red", "border":"2px solid red"};
+
+            /* 선택된 요소의 모든 자손(바로 다음 레벨들만) 객체를 리턴 */
+            // $(".wrap").children().css(style);
+
+            // $(".wrap").children().children().css(style);
+            // $(".wrap").children().children('ul').css(style);
+
+            // $(".wrap").children().children('ul').children("li").children("span").css(style);
+
+            /* 선택된 요소의 인자와 일치하는 모든 후손(모든 레벨) 객체를 리턴 */ 
+            $(".wrap").find("span").css(style);
+        });
+    </script>
+</body>
+</html>

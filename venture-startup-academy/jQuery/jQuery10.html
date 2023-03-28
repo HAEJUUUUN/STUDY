@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .outer {
+            width: 200px;
+            height: 200px;
+            background: orange;
+            padding: 50px;
+        }
+        .inner {
+            width: 100%;
+            height: 100%;
+            background: red;
+        }
+        .reverse {
+            background: black;
+            color: white;
+        }
+    </style>
+    <script src="jquery-3.6.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>마우스 관련 이벤트 메소드</h1>
+    <h3>mouseover/mouseout, mouseenter/mouseleave</h3>
+    <p>
+        mouseover-mouseout: 자식 요소에 접근 시에도 이벤트 핸들링 함.<br>
+        mouseenter-mouseleave: 자식 요소에 접근 시에는 이벤트 핸들링 하지 않음.
+    </p>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <script>
+        $(function(){
+            // $('.outer').mouseover(function(){
+            //     console.log("OVER!");
+            // });
+            // $('.outer').mouseout(function(){
+            //     console.log("OUT!");
+            // });
+            $('.outer').mouseenter(function(){
+                console.log("ENTER!");
+            });
+            $('.outer').mouseleave(function(){
+                console.log("LEAVE!");
+            });
+        });
+    </script>
+
+    <h3>hover() 메소드</h3>
+    <p>mouseenter와 mouseleave(hover의 두 번째 인수)를 동시에 사용하는 효과이다.</p>
+    <h1 id="test1">hover 테스트</h1>
+    <script>
+        $(function(){
+            $("#test1").hover(function(){
+                $(this).toggleClass("reverse");
+                // $(this).addClass("reverse");
+                console.log("enter");
+            }, function(){
+                $(this).toggleClass("reverse");
+                // $(this).removeClass("reverse");
+                console.log("leave");
+            });
+        });
+    </script>
+
+    <h3>키보드 이벤트</h3>
+    <p>
+        keydown: 키보드가 눌려질 때,<br>
+        keypress: 글자가 입력될 때, 펑션키(fn키), 다양한 기능키에는 사용 못함<br>
+        keyup: 키보드가 떼어질 때, Tab키는 사용 못함<br>
+    </p>
+    <input type="text" id="test">
+    <script>
+        $(function(){
+            // $("#test").keydown(function(e){
+            //     console.log("keydown: " + e.key);
+            // });
+            // $("#test").keypress(function(e){
+            //     console.log("keypress: " + e.key);
+            // });
+            $("#test").keyup(function(e){
+                console.log("keyup: " + e.key);
+            });
+        });
+    </script>
+
+    <h4>동적으로 글자수 세기</h4>
+    <div>
+        <p><span id="counter">0</span>/150</p>
+        <textarea cols="70" rows="5"></textarea>
+    </div>
+    <script>
+        /*
+            jQuery를 사용 시,
+            val(): input(text, radio, checkbox), textarea
+            text(), html(): 그 외(content영역(시작태그와 종료태그 사잇값))
+        */
+       $(function(){
+            // keydown을 하면 과거의 값이나온다.
+           $('textarea').keyup(function(){
+                // console.log($(this).text());
+
+                /* textarea는 input태그처럼 입력된 값을 val()을 써서 꺼내야 한다. */
+                // console.log($(this).val());
+
+                var inputLength = $(this).val().length;
+
+                $("#counter").text(inputLength);
+
+                var remain = 150 - inputLength;
+
+                if(remain >= 0){
+                    $("#counter").parent().css("color", "black");
+                } else{
+                    $("#counter").parent().css("color", "red");
+                }
+           });
+       });
+    </script>
+
+</body>
+</html>

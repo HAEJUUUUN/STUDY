@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Food Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>오늘의 메뉴</h1>
+    <ul id="menu">
+        <li>치킨</li>
+    </ul>
+    <button id="appendBtn">메뉴 추가(append)</button>
+    <button id="prependBtn">메뉴 추가(prepend)</button>
+    <button id="afterBtn">메뉴 추가(after)</button>
+    <button id="beforeBtn">메뉴 추가(before)</button>
+
+    <script>
+        $(document).ready(function () {
+            $("#appendBtn").click(function () {
+                $("#menu").append("<li>피자</li>");
+            });
+
+            $("#prependBtn").click(function () {
+                $("#menu").prepend("<li>파스타</li>");
+            });
+            
+            $("#afterBtn").click(function () {
+                $("#menu li:first").after("<li>샐러드</li>");
+            });
+
+            $("#beforeBtn").click(function () {
+                $("#menu li:last").before("<li>스테이크</li>");
+            });
+        });
+    </script>
+</body>
+
+</html>

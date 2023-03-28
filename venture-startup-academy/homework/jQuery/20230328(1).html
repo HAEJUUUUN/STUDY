@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 실습</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
+</head>
+<body>
+    <h1>jQuery 실습</h1>
+    <div id="content">
+        <p>첫 번째 문단입니다.</p>
+        <p>두 번째 문단입니다.</p>
+        <input type="text" id="inputText" placeholder="여기에 텍스트를 입력하세요.">
+        <p>글이 작성될 부분</p>
+    </div>
+    <button id="btnText">텍스트 변경</button>
+    <button id="btnHtml">HTML 변경</button>
+    <button id="btnVal">값 변경</button>
+    <script>
+        $(function() {
+
+            /* 1. text() 메소드 예제 */
+            $('#btnText').click(function() {
+                $("#content p:first-child").text("변경된 첫 번째 문단입니다.");
+            });
+
+            /* 2. html() 메소드 예제 */
+            $('#btnHtml').click(function() {
+                $("#content p:nth-child(2)").html("<strong>변경된 두 번째 문단입니다.</strong>");
+            });
+
+            /* 3. val() 메소드 예제 */
+            $('#btnVal').click(function() {
+                var inputText = $("#inputText").val();
+
+                if (inputText.length > 0) {
+                    $("#content p:last-child").text(inputText);
+                } else {
+                    alert("텍스트를 입력하세요.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
