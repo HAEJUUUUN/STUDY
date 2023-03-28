@@ -1,0 +1,37 @@
+.main {
+    text-align: center;
+}
+
+#clock {
+    font-size: 15px;
+    color: white;
+    background-color: rgb(244, 201, 47);
+    margin-bottom: 30px;
+}
+
+#greeting {
+    font-size: 30px;
+    color: rgb(255, 145, 0);
+    margin-top: -10px;
+}
+
+#gototodolist {
+    margin-top: -10px;
+    font-size: 15px;
+    text-decoration: underline;
+    color: rgb(211, 182, 75);
+}
+
+#gototodolist:hover {
+    cursor: pointer;
+}
+
+img#clockimg {
+    width: 70px;
+}
+
+img:not(#clockimg) {
+    width: 400px;
+    margin-left: 170px;
+  }
+

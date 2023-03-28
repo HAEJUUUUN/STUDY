@@ -1,0 +1,57 @@
+.todo {
+    text-align: center;
+}
+
+h3 {
+    color: rgb(255, 145, 0);
+}
+
+ul {
+    list-style: none; 
+}
+
+button {
+    all: unset;
+    background-color: rgb(255, 179, 0);
+    border-radius: 25px;
+    font-size: 13px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+li {
+    margin: 10px;
+}
+
+span {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+#gotohome {
+    margin: 0;
+    font-size: 10px;
+    padding: 5px;
+}
+
+#gotohome:hover {
+    cursor: pointer;
+    background-color: rgb(255, 145, 0);
+    font-weight: 550;
+    color: white;
+    border-radius: 25px;
+}
+
+#backhome {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+img#home {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
