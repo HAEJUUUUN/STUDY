@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #flower2 {
+            opacity: 0.4;
+        }
+    </style>
+    <script src="jquery-3.6.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>fade() 메소드</h1>
+    <h3>fadeIn(): 선명해지게, fadeOut(): 희미해지게</h3>
+    <button id="fadeIn">fadeIn()</button>
+    <button id="fadeOut">fadeOut()</button>
+    <br>
+    <img src="../01_html/sample/image/flower1.PNG" id="flower" width="450px" height="300px">
+    <script>
+        $(function(){
+            $("#fadeIn").click(function(){
+                $("img").fadeIn(1000);
+            });
+            $("#fadeOut").click(function(){
+                $("img").fadeOut(1000);
+            });
+        });
+    </script>
+
+    <hr>
+    <h3>toggle()</h3>
+    <button id="toggle">toggle()</button>
+    <br>
+    <img src="../01_html/sample/image/river2.PNG" id="river2" width="450px" height="300px">
+    <script>
+        $(function(){
+            $("#toggle").click(function(){
+                $("#river2").fadeToggle(2000, function(){
+                    alert("토글 완료");
+                });
+            });
+        });
+    </script>
+
+    <hr>
+    <h3>fadeTo(speed, opacity)</h3>
+    <img src="../01_html/sample/image/flower2.PNG" id="flower2">
+    <script>
+        $(function(){
+            $("#flower2").hover(function(){
+                $(this).fadeTo(700, 1);
+            }, function(){
+                $(this).fadeTo(700, 0.4);
+            }).click(function(){
+                // alert("클릭했다잉");
+                location.href="http://www.naver.com";
+            });
+        });
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

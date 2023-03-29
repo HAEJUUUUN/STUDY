@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #test2, #test3 {
+            width: 300px;
+            height: 300px;
+            background: orangered;
+        }
+        .test {
+            background: powderblue;
+        }
+    </style>
+    <script src="jquery-3.6.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>이벤트</h1>
+    <h3>이벤트 관련 속성</h3>
+    <p>이벤트 핸들러의 매개인자로 event 객체를 전달함.
+        인라인 방식으로 event만 쓸 수 있다.
+    </p>
+    <button onclick="test1(event);">실행확인</button>
+    <script>
+        function test1(e){
+            console.log(e);
+            console.log(e.target);
+        }
+    </script>
+
+    <hr>
+
+    <h3>이벤트 연결 메소드 종류</h3>
+    <p>
+        bind(): 현재 존재하는 문서 객체만 이벤트 연결<br>
+        unbind(): bind()로 연결 된 이벤트 제거
+    </p>
+    <h1 id="test1">마우스를 올려보세요</h1>
+    <script>
+
+        /* 두 가지 이벤트를 bind를 통해 연달아 바인딩 */ 
+        $("#test1").bind("mouseenter", function(){
+            $(this).css({"background":"black", "color":"white"});
+        }).bind("mouseleave", function(){
+            $(this).css({"background":"white", "color":"black"});
+        });
+
+        /* 클릭 시 기존 이벤트 제거 */ 
+        $("#test1").bind("click", function(){
+            $(this).unbind("mouseenter")
+                   .unbind("mouseleave")
+                   .css({"background":"white", "color":"black"});
+        });
+    </script>
+
+    <h4>
+        on(): bind() 대신에 on()으로 대체 됨(1.7이후)
+        off(): on()으로 연결 된 이벤트 제거
+    </h4>
+    <div id="test2">기본상태!!</div>
+    <script>
+
+        /* bind()와 유사함 */ 
+        $("#test2").on("click", function(){
+            console.log($(this).text());
+        });
+
+        /* 세 가지 이벤트를 하나의 객체와 .on()으로 부여하기 */
+        $("#test2").on({"mouseenter":function(){
+            $(this).css("background", "yellowgreen").text("마우스 올라감");
+        }, "mouseleave":function(){
+            $(this).css("background", "yellow").text("마우스 내려감");
+        }, "click":function(){
+            $(this).off("mouseenter")
+                   .off("mouseleave")
+                   .css("background", "orangered")
+                   .text("기본값");
+        }});
+    </script>
+
+    <h3>.on(events, selector, handler)</h3>
+    <p>
+        선택자를 기준으로 하위 요소인 파라미터로 전달 된 selector가 이벤트 소스가 되어서
+        이벤트 처리를 할 수 있다.
+    </p>
+    <div id="wrap">
+        <h2>Header</h2>
+    </div>
+    <script>
+        $(function(){
+            // $("h2").click(foo);
+            $("body").on("click", "h2", foo);
+        });
+
+        function foo(e){
+            console.log(e.target);
+            $("#wrap").append("<h2>Header1</h2>");
+        };
+    </script>
+
+    <h3>.on(events, data, handler)</h3>
+    <p>이벤트 객체의 data 속성을 이용해 보자.</p>
+    <div id="test3">기본상태</div>
+    <script>
+        $("#test3").on("click", {name:"한정욱"}, function(e){
+            console.log(e.data.name + "님 환영합니다!");
+        });
+    </script>
+</body>
+</html>

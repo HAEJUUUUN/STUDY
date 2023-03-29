@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table{width:450px;}
+        table td{padding:5px;}
+        table tr>td:nth-of-type(1){width:100px;}
+        table tr>td:nth-of-type(2){width:150px;}
+        table tr>td:nth-of-type(3){width:150px;}
+        
+        .trg{
+            width:100px;
+            height:100px;
+            background:orangered;
+            text-align:center;              /* 수평 정렬 */
+            vertical-align:middle;          /* 수직 정렬 */
+            cursor:pointer;                 /* 커서를 손가락 모양으로 변경 */
+        }
+        
+        .increment{
+            background:black;
+            width:100px;
+            height:25px;
+            color:white;
+            text-align:center;
+            margin-top:20px;
+            cursor:pointer;
+        }
+    </style>
+    <script src="jquery-3.6.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>입력 양식 이벤트</h1>
+    <div id="wrap">
+        <h1 align="center">회원 가입</h1>   <!-- align속성으로 태그를 가운데 정렬 -->
+        <form action="#">
+            <table style="margin:auto">     <!-- style속성으로 margin:auto를 통해 가운데 정렬 -->
+                <tr>
+                    <td><label>이름</label></td>
+                    <td><input type="text" name="name" id="name" required></td>
+                    <td><label id="nameresult"></label></td>
+                </tr>
+                <tr>
+                    <td><label>아이디</label></td>
+                    <td><input type="text" name="userId" id="userId" required></td>
+                    <td><input type="button" value="중복확인"></td>
+                </tr>
+                <tr>
+                    <td><label>비밀번호</label></td>
+                    <td><input type="password" name="pwd1" id="pwd1" required></td>
+                </tr>
+                <tr>
+                    <td><label>비밀번호 확인</label></td>
+                    <td><input type="password" name="pwd2" id="pwd2" required></td>
+                    <td><label id="pwdresult"></label></td>
+                </tr>
+                <tr>
+                    <td><label>이메일</label></td>
+                    <td><input type="email" name="email" id="email" required></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="reset">&nbsp;<input type="submit"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        $(function(){
+
+            /* input 태그 관련 각종 이벤트 */ 
+            $("#name").focus(function(){
+                console.log("FOCUS");
+            }).blur(function(){
+                console.log("BLUR");
+            }).change(function(){
+
+                /*
+                    checkbox, select, radio 버튼과 달리
+                    input 태그에 있어서의 change 이벤트는 기존의 input태그
+                    안에 있는 value 값에 변화를 준 후 blur 효과 발생 시 change
+                    이벤트가 발생한다.
+                */
+                console.log("CHANGE");
+            }).select(function(){
+                console.log("SELECT");
+            });
+
+            /* focusin(), focusout()은 해당 요소와 자식 요소에 focus와 blur효과를 달아준다. */
+            $("td").focusin(function(){
+                console.log("FOCUSIN");
+                $(this).css("background", "beige");
+                $(this).children().css("background", "yellow");
+            }).focusout(function(){
+                console.log("FOCUSOUT");
+                $(this).css("background", "white");
+                $(this).children().css("background", "white");
+            });
+
+            /* 정규표현식(regular expression/regex)을 이용 */ 
+            $("#name").change(function(){
+                
+                /* 한글만 최소 2자 이상 */
+                var regExp = /^[가-힣]{2,}$/;
+
+                if(regExp.test($(this).val())){     // 사용자가 입력한 이름이 정규표현식 만족 유무
+                    $("#nameresult").text("정상입력").css("color", "green");
+                } else {
+                    $("#nameresult").text("한글로 2자 이상 입력하세요").css("color", "red");
+                    $(this).val('');
+                }
+            });
+
+            $("#pwd2").change(function(){                   // 비밀번호 확인에 비밀번호를 쓰고 blur일 때
+                if($("#pwd1").val() != $(this).val()){      // 비밀번호의 비밀번호와 비밀번호 확인의 비밀번호가 일치하지 않을 때
+                    $("#pwdresult").text("비밀번호가 일치하지 않습니다.").css("color", "red");
+                } else {
+                    $("#pwdresult").text("비밀번호가 일치").css("color", "green");
+                }
+            });
+
+            $("#pwd1").change(function(){                   // 비밀번호에 비밀번호를 쓰고 blur일 때
+                if($("#pwd2").val() != $(this).val()){      // 비밀번호의 비밀번호와 비밀번호 확인의 비밀번호가 일치하지 않을 때 
+                    if(!$("#pwd2").val().length == 0) {     // 아직 비밀번호 확인에 비밀번호가 쓰여있을 때
+                        $("#pwdresult").text("비밀번호가 일치하지 않습니다.").css("color", "red");
+                    }
+                } else {
+                    $("#pwdresult").text("비밀번호가 일치").css("color", "green");
+                }
+            });
+        });
+    </script>
+
+    <hr>
+    <h3>trigger() 메소드</h3>
+    <p>다른 이벤트의 이벤트 핸들러 함수를 호출하는 용도로 사용</p>
+    <div id="trg" class="trg">
+        Click Num : <span>0</span>
+    </div>
+    <div id="increment" class="increment">click me!</div>
+
+    <script>
+        var cnt = 0;
+        $(function(){
+            $("#trg").on("click", function(){
+                cnt++;
+                $("span").text(cnt);
+            });
+            $("#increment").click(function(){
+                $("#trg").trigger("click");
+            });
+        });
+    </script>
+
+    <p>trigger 메소드는 실제 클릭이 일어나는 것이 아닌 click 이벤트 핸들러 함수만 요청함</p>
+    <a href="http://www.naver.com" id="goNaver" onclick="justClicked()">네이버로 이동</a>
+    <button id="btnTrg">trigger를 통한 a태그 이벤트 핸들러 실행</button>
+    <script>
+        function justClicked(){
+            console.log("justClicked!!");
+        }
+
+        $(function(){
+            $("#btnTrg").click(function(){
+                $("#goNaver").trigger("click");
+            });
+        });
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

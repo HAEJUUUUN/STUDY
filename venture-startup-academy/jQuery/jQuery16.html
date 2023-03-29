@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #river2 {
+            display:none;
+        }
+    </style>
+    <script src="jquery-3.6.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>시각적 효과</h1>
+    <h3>show()와 hide()</h3>
+    <p>문서 객체를 크게 하며 보여주거나 작게하며 사라지게 한다.</p>
+    <p>
+        $(selector).show(speed, easing, callback)
+    </p>
+    <a href="https://api.jqueryui.com/easings/">jQuery easing 관련 링크</a>
+    <button id="show">보여주기</button>
+    <button id="hide">숨기기</button>
+    <img src="../01_html/sample/image/river2.PNG" id="river2">
+    <script>
+        $(function(){
+            $("#show").click(function(){
+                $("#river2").show(2000, 'swing', function(){
+                    alert("사진 떴다잉!~");
+                });
+            });
+            $("#hide").click(function(){
+                $("#river2").hide("fast");
+            });
+        });
+    </script>
+
+    <br>
+    <button id="toggle">토글하기</button>
+    <br>
+    <img src="../01_html/sample/image/tower1.PNG" id="tw1">
+    <script>
+        // $(function(){
+        //     $("#toggle").click(function(){
+        //         $("#tw1").toggle(400, function(){
+        //             alert("토글완료");
+        //         });
+        //     });
+        // });
+
+        $(function(){
+            $("#toggle").click(function(){
+                if($("#tw1").css("display")!="none"){
+                    $("#tw1").hide(400);
+                } else {
+                    $("#tw1").show(2000);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

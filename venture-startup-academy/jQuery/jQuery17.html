@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        div{
+            width:300px;
+            height:30px;
+            background:yellowgreen;
+            color:orangered;
+            border-radius:10px;
+            text-align:center;
+            border:1px solid green;
+            cursor:pointer;
+        }
+        p{
+            border:1px solid lightgray;
+            width:300px;
+            height:200px;
+            /* display:none; */
+            display:block;
+        }
+    </style>
+    <script src="jquery-3.6.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>slide 메소드</h1>
+    <h3>slideDown()과 slideUp()</h3>
+    <p>$(selector).slideUp(speed, easing, callback)</p>
+    <div>첫 번째 메뉴</div>
+    <p class="contents">내용</p>
+    <div>두 번째 메뉴</div>
+    <p class="contents">내용</p>
+    <div>세 번째 메뉴</div>
+    <p class="contents">내용</p>
+    <div>네 번째 메뉴</div>
+    <p class="contents">내용</p>
+    <div>다섯 번째 메뉴</div>
+    <p class="contents">내용</p>
+
+    <script>
+        $(function(){
+            $("div").click(function(){
+                // $(this).next().slideDown();
+                // $(this).next().slideUp();
+                // $(this).next().slideToggle(1000, function(){
+                //     console.log("토글 완료");
+                // });
+
+                /* 1. 클래스 추가 및 제거 */ 
+                // $(this).next("p").slideToggle(function(){
+                //     $(this).addClass("abc");
+                // });
+
+                // $(this).next("p").slideUp(function(){
+                //     $(this).removeClass("contents");
+                // });
+
+                /* 2. display 속성으로 slideDown()과 slideUp 따로 처리하기 */ 
+                if($(this).next().css("display") == "none"){
+                    // console.log($(this));
+                    $(this).next().slideDown();
+                    $(this).next().addClass("abc");
+                } else {
+                    $(this).next().slideUp();
+                    $(this).next().removeClass("abc");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
